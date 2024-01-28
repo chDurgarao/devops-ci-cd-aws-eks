@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dj-rtp
+  namespace: dj
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app:  dj-rtp
+  template:
+    metadata:
+      labels:
+        app:  dj-rtp
+    spec:
+      imagePullSecrets:
+      - name: jfrogcred
+      containers:
+      - name:  dj-rtp
+        image: <jfrog url>
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000
+
